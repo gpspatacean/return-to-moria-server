@@ -1,0 +1,46 @@
+; The list of player permissions.
+; You should only modify this list when the server is closed.
+; This list will be overwritten when players are blocked in-game.
+;
+; Each line should be formatted like:
+; name = Option,Option,Option
+;
+; Options Available:
+;
+; Blocked
+; Will block a user with that account name.
+;
+; Default
+; Will use the default permissions.
+;
+; NoConstruction
+; Prevents user using any build or quickbuild functions,
+; or deconstructing any player constructions.
+;
+; QuickBuild
+; Allows quick-build of platforms and rope ladders,
+; but prevents other construction or deconstruction.
+;
+; name = AllConstruction
+; Allows all construction and deconstruction.
+;
+; name = NoStorage
+; Prevents interaction with storage containers, and
+; disallows using shared base storage for crafting.
+;
+; name = AllStorage
+; Allows all use of storage containers and contents.
+;
+; Example:
+; Default = QuickBuild,NoStorage
+; Durin = Blocked
+; Gimli = AllConstruction,AllStorage
+; Thorin = Default
+;
+; This sets default permissions for new players to allow quickbuilding,
+; but prevents them from building other constructions or using storage.
+; The user named Durin cannot join the server.
+; The user named Gimli will have all permissions.
+; The user named Thorin will have default permissions if they join.
+
+Default = AllConstruction,AllStorage
