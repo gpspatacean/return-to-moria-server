@@ -13,8 +13,9 @@ An initial world, `Brave New World`, is provided by default, and the password to
 - 5900 (VNC, optional but strongly recommended)
 - 22 (SSH, if enabled; optional)
 
-## Volumes
-- /server: Recommended to mount a volume to this path to keep the server data persistent and to avoid downloading the server files every time the container is started.
+## Volumes / bind-mounts
+- `/server`: Strongly recommended to mount this path to keep the server data persistent and to avoid downloading the server files every time the container is started.
+- `/root/.local/share/Steam`: Optional, but recommended to mount this path to avoid downloading the Steam files on every container start.
 
 ## Building the image
 ```
@@ -23,7 +24,7 @@ docker build -t {image-name}:{image-tag} .
 
 ## Running the container
 ```
-docker run -d --name {container-name} -p 7777:7777/udp -p 5900:5900 -v {host-path}:/server {image-name}:{image-tag}
+docker run -d --name {container-name} -p 7777:7777/udp -p 5900:5900 -v {host-path}:/server -v {other-host-path}:/root/.local/share/Steam {image-name}:{image-tag}
 ```
 
 ## Additional details
