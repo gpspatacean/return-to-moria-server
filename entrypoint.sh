@@ -15,8 +15,13 @@ x11vnc -display :0 -nopw -bg -xkb -forever
 echo "[entrypoint] Installing/Updating Game Server files..."
 /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "/server" +login anonymous +app_update 3349480 +quit
 
-echo "[entrypoint] Move world files if its the 1st run..."
+echo "[entrypoint] Move world files if it is the 1st run..."
 if [ ! -f /server/Moria/MoriaServerConfig.ini ]; then
+  if [ -d /server/Moria/Saved/SaveGamesDedicated/ ]; then
+    echo "[entrypoint] Backing up existing SaveGamesDedicated directory..."
+    timestamp=$(date +"%Y%m%d_%H%M%S")
+    tar -czvf /server/SavedGamesDedicated_"$timestamp".tar.gz -C /server/Moria/Saved SaveGamesDedicated
+  fi
 	echo "[entrypoint] Copying world files..."
 	cp /root/config/* /server/
 	mkdir -p /server/Moria/Saved/SaveGamesDedicated/
