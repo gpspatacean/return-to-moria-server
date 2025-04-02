@@ -16,7 +16,7 @@ echo "[entrypoint] Installing/Updating Game Server files..."
 /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "/server" +login anonymous +app_update 3349480 +quit
 
 echo "[entrypoint] Move world files if it is the 1st run..."
-if [ ! -f /server/Moria/MoriaServerConfig.ini ]; then
+if [ ! -f /server/MoriaServerConfig.ini ]; then
   if [ -d /server/Moria/Saved/SaveGamesDedicated/ ]; then
     echo "[entrypoint] Backing up existing SaveGamesDedicated directory..."
     timestamp=$(date +"%Y%m%d_%H%M%S")
