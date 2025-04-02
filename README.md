@@ -40,7 +40,7 @@ The image provides an initial world. This can be changed by adjusting `Copying w
 * [here](config/MoriaServerConfig.ini) prior to building the image;
 * in `/server/Moria/MoriaServerConfig.ini` after the server has been started.
 
-If no world is provided, on first run, the server will create one, but connections to it will not be possible until the container is restarted. `VNC` connection is strongly recommended to see what the server console.
+If no world is provided, on first run, the server will create one, but connections to it will not be possible until the container is restarted. `VNC` connection is strongly recommended to see the server console.
 
 ### SSH 
 If SSH-ing into the container is desired, prior to building the image:
