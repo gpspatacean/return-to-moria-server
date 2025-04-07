@@ -15,8 +15,7 @@ RUN	echo "tzdata tzdata/Areas select Europe" | debconf-set-selections && \
 
 RUN winecfg && sleep 5 && xvfb-run winetricks -q vcrun2022
 
-RUN apt-get remove -y --purge wget debconf-utils && \
-	apt-get clean autoclean && \
+RUN apt-get clean autoclean && \
 	apt-get autoremove -y && \
 	rm -rf /var/lib/apt/lists/*
 
