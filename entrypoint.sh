@@ -2,15 +2,16 @@
 
 set -e -x
 
+export DISPLAY=:0.0
 #Uncomment these to enable ssh access.
 #echo "[entrypoint] Staring sshd server..."
 #/usr/sbin/sshd &
 
 echo "[entrypoint] Starting Xvfb server..."
-Xvfb :0 -screen 0 1024x768x24 &
+Xvfb $DISPLAY -screen 0 1024x768x24 &
 
 echo "[entrypoint] Staring x11vnc server..."
-x11vnc -display :0 -nopw -bg -xkb -forever
+x11vnc -display $DISPLAY -nopw -bg -xkb -forever
 
 echo "[entrypoint] Installing/Updating Game Server files..."
 /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "/server" +login anonymous +app_update 3349480 +quit
@@ -30,4 +31,4 @@ fi
 
 
 echo "[entrypoint] Starting Moria Server..."
-exec env DISPLAY=:0.0 wine /server/Moria/Binaries/Win64/MoriaServer-Win64-Shipping.exe Moria 2>&1
+exec wine /server/Moria/Binaries/Win64/MoriaServer-Win64-Shipping.exe Moria 2>&1
