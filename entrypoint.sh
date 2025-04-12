@@ -23,10 +23,10 @@ if [ ! -f /server/MoriaServerConfig.ini ]; then
     timestamp=$(date +"%Y%m%d_%H%M%S")
     tar -czvf /server/SavedGamesDedicated_"$timestamp".tar.gz -C /server/Moria/Saved SaveGamesDedicated
   fi
-	echo "[entrypoint] Copying world files..."
-	cp /root/config/* /server/
-	mkdir -p /server/Moria/Saved/SaveGamesDedicated/
-	cp /root/world/* /server/Moria/Saved/SaveGamesDedicated/
+  echo "[entrypoint] Copying world files..."
+  cp /root/config/* /server/
+  mkdir -p /server/Moria/Saved/SaveGamesDedicated/
+  cp /root/world/* /server/Moria/Saved/SaveGamesDedicated/
 fi
 
 
