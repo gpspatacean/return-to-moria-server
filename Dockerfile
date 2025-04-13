@@ -7,7 +7,7 @@ RUN	echo "tzdata tzdata/Areas select Europe" | debconf-set-selections && \
 	echo "steam steam/question select I AGREE" | debconf-set-selections && \
 	echo "steam steam/license note ''" | debconf-set-selections && \
 	apt-get update -y && apt-get upgrade -y && \
-	apt-get install -y xvfb x11vnc wine winetricks openssh-server && \
+	apt-get install -y xvfb x11vnc fluxbox wine winetricks openssh-server && \
 	dpkg --add-architecture i386 && \
 	apt-get update -y && apt-get install -y wine32:i386 && \
 	apt-get install -y steam steamcmd && \

@@ -10,6 +10,9 @@ export DISPLAY=:0.0
 echo "[entrypoint] Starting Xvfb server..."
 Xvfb $DISPLAY -screen 0 1024x768x24 &
 
+echo "[entrypoint] Starting fluxbox..."
+fluxbox 2>/dev/null &
+
 echo "[entrypoint] Staring x11vnc server..."
 x11vnc -display $DISPLAY -nopw -bg -xkb -forever
 
