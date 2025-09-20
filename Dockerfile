@@ -7,11 +7,14 @@ RUN	echo "tzdata tzdata/Areas select Europe" | debconf-set-selections && \
 	echo "steam steam/question select I AGREE" | debconf-set-selections && \
 	echo "steam steam/license note ''" | debconf-set-selections && \
 	apt-get update -y && apt-get upgrade -y && \
-	apt-get install -y xvfb x11vnc fluxbox wine winetricks openssh-server && \
+	apt-get install -y xvfb x11vnc fluxbox wine winetricks openssh-server locales && \
 	dpkg --add-architecture i386 && \
 	apt-get update -y && apt-get install -y wine32:i386 && \
 	apt-get install -y steam steamcmd && \
-	mkdir -v /run/sshd
+	mkdir -v /run/sshd && \
+	sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+	dpkg-reconfigure locales && \
+	update-locale LANG=en_US.UTF-8
 
 RUN winecfg && sleep 5 && xvfb-run winetricks -q vcrun2022
 
