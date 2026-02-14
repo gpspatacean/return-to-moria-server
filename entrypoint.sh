@@ -2,6 +2,9 @@
 
 set -e -x
 
+#Cleanup for reusing (restarting) a stopped container
+rm -f /tmp/.X0-lock
+
 export DISPLAY=:0.0
 #Uncomment these to enable ssh access.
 #echo "[entrypoint] Staring sshd server..."
